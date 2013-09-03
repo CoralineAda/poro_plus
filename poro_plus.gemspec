@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["corey@idolhands.com"]
   spec.description   = %q{Simple methods to make POROs more fun.}
   spec.summary       = %q{Simple methods to make Plain Old Ruby Objects (POROs) more fun.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/Bantik/poro_plus"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
