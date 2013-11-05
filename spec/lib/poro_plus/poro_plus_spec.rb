@@ -18,16 +18,41 @@ describe PoroPlus do
   describe '#to_hash' do
 
     it 'serializes its instance variables' do
-      thing = Thing.new(:foo => 1, :bar => 2)
+      thing = Thing.new(foo: 1, bar: 2)
       thing.to_hash[:foo].should == 1
       thing.to_hash[:bar].should == 2
     end
 
-    it 'skips nil-value instance variables if so configured' do
-      thing = Thing.new(:foo => 1, :bar => nil)
+    it 'nil-values are not skipped normally' do 
+      thing = Thing.new(foo: 1, bar: nil)
+      thing.to_hash[:foo].should == 1
+      thing.to_hash[:bar].should be_nil
+    end
+
+    it 'skips nil-value instance variables if so configured with skip_nils flag' do
+      thing = Thing.new(foo: 1, bar: nil)
       thing.to_hash(:skip_nils => true).keys.include?(:bar).should be_false
+    end
+
+  end
+ 
+  describe '#to_json' do
+    it "converts its instance variables to json string" do
+      thing = Thing.new(foo: 1, bar: 2)
+      thing.to_json.should == "{\"foo\":1,\"bar\":2}"
+    end
+
+    it "converts nils to null" do
+      thing = Thing.new(foo: 1, bar: nil)
+      thing.to_json.should == "{\"foo\":1,\"bar\":null}"
+    end
+
+    it 'skips nil-value instance variables if so configured with skip_nils flag' do
+      thing = Thing.new(foo: 1, bar: nil)
+      thing.to_json(:skip_nils => true).should == "{\"foo\":1}"
     end
 
   end
 
 end
+
