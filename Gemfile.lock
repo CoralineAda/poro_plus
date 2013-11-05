@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    poro_plus (1.0.1)
+    poro_plus (1.0.2)
 
 GEM
   remote: https://rubygems.org/
