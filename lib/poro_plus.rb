@@ -16,7 +16,7 @@ module PoroPlus
   end
 
   def to_json(args={})
-    to_hash(args).to_json
+    to_hash(args).to_json(args.tap { |hs| hs.delete(:skip_nils) })
   end
 
   private
