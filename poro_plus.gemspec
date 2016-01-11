@@ -7,8 +7,8 @@ require 'poro_plus/version'
 Gem::Specification.new do |spec|
   spec.name          = "poro_plus"
   spec.version       = PoroPlus::VERSION
-  spec.authors       = ["Bantik"]
-  spec.email         = ["corey@idolhands.com"]
+  spec.authors       = ["Coraline Ada Ehmke"]
+  spec.email         = ["coraline@idolhands.com"]
   spec.description   = %q{Simple methods to make POROs more fun.}
   spec.summary       = %q{Simple methods to make Plain Old Ruby Objects (POROs) more fun.}
   spec.homepage      = "https://github.com/Bantik/poro_plus"

@@ -3,7 +3,7 @@ require 'json'
 module PoroPlus
 
   def initialize(args={})
-    args.each{|k,v| self.public_send("#{k}=", v) if self.respond_to?("#{k}=")}
+    args.each{ |k,v| instance_variable_set("@#{key}".to_sym, value) }
   end
 
   def to_hash(args={})
