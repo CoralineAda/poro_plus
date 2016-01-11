@@ -21,7 +21,7 @@ Simply include PoroPlus into your Ruby class:
 
     class MyThing
       include PoroPlus
-      attr_accessor :foo, :bar, :tres
+      attr_reader :foo, :bar, :tres
     end
 
 Then you can:
