@@ -8,7 +8,9 @@ module PoroPlus
 
   def to_hash(args={})
     instance_variables.inject({}) do |h, iv|
+      key = sanitized_key(iv)
       value = instance_variable_get(iv)
+      value ||= self.public_send(key) if self.respond_to?(key)
       return h if value.nil? && args[:skip_nils]
       h[sanitized_key(iv)] = value
       h

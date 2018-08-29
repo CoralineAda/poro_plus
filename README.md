@@ -32,8 +32,28 @@ Then you can:
     > thing_1.to_hash
     => {:foo=>"Raven", :bar=>"Writing Desk", :tres=>nil}
 
-    > thing_one.to_json(:skip_nils => true)
+    > thing_1.to_json(:skip_nils => true)
      => "{\"foo\":\"Raven\",\"bar\":\"Writing Desk\"}"
+
+If you want the JSON to include methods that return values:
+
+    class MyThing
+      include PoroPlus
+      attr_reader :foo, :bar, :tres
+
+      def tres
+        "tres leches con #{self.bar}"
+      end
+
+    end
+
+Then, passing a nil to create a placeholder for that JSON attribute, you can:
+
+    > thing_2 = MyThing.new(:foo => 'Taco', :bar => 'cinnammon', :tres => nil) # nil placeholder
+    => #<MyThing:0x007ff4866ea398 @foo="Taco", @bar="cinnammon", @tres=nil>
+
+    > thing_2.to_json(:skip_nils => true)
+     => "{\"foo\":\"Taco\",\"bar\":\"cinnammon\",\"tres\":\"tres leches con cinnammon\"}"
 
 ## Contributing
 
