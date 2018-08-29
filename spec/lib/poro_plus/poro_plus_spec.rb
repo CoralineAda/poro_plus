@@ -6,6 +6,11 @@ describe PoroPlus do
     include PoroPlus
     attr_accessor :foo
     attr_accessor :bar
+    attr_reader :baz
+
+    def baz
+      foo + bar
+    end
   end
 
   describe '#sanitized_key' do
@@ -23,7 +28,7 @@ describe PoroPlus do
       thing.to_hash[:bar].should == 2
     end
 
-    it 'nil-values are not skipped normally' do 
+    it 'nil-values are not skipped normally' do
       thing = Thing.new(foo: 1, bar: nil)
       thing.to_hash[:foo].should == 1
       thing.to_hash[:bar].should be_nil
@@ -31,11 +36,11 @@ describe PoroPlus do
 
     it 'skips nil-value instance variables if so configured with skip_nils flag' do
       thing = Thing.new(foo: 1, bar: nil)
-      thing.to_hash(:skip_nils => true).keys.include?(:bar).should be_false
+      thing.to_hash(:skip_nils => true).keys.include?(:bar).should be_falsey
     end
 
   end
- 
+
   describe '#to_json' do
     it "converts its instance variables to json string" do
       thing = Thing.new(foo: 1, bar: 2)
@@ -54,5 +59,11 @@ describe PoroPlus do
 
   end
 
-end
+  context "with overriding methods" do
+    it "replaces a nil initialized value with a method call" do
+      thing = Thing.new(foo: 1, bar: 2, baz: nil)
+      thing.to_json.should == "{\"foo\":1,\"bar\":2,\"baz\":3}"
+    end
+  end
 
+end
