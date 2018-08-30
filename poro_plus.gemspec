@@ -10,8 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Coraline Ada Ehmke"]
   spec.email         = ["coraline@idolhands.com"]
   spec.description   = %q{Simple methods to make POROs more fun.}
-  spec.summary       = %q{Simple methods to make Plain Old Ruby Objects (POROs) more fun. Also useful for creating bounded context / domain models (for example, in services) as first-class objects with custom getters and handy JSON serialization!
-}
+  spec.summary       = %q{Simple methods to make Plain Old Ruby Objects (POROs) more fun. Also useful for creating bounded context / domain models (for example, in services) as first-class objects with custom getters and handy JSON serialization!}
   spec.homepage      = "https://github.com/CoralineAda/poro_plus"
   spec.license       = "MIT"
 
