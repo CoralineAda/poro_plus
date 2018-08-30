@@ -1,5 +1,5 @@
 # PoroPlus
-Friendly methods intended to make POROs more useful.
+Friendly methods intended to make POROs more useful. Also useful for creating bounded context / domain models (for example, in services) as first-class objects with custom getters and handy JSON serialization!
 
 ## Installation
 
